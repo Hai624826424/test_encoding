@@ -1,1 +1,3 @@
 *.ini -diff
+
+*.ini		text working-tree-encoding=eucjp
