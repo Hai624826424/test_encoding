@@ -1,0 +1,27 @@
+Report linh tinh
+V? git encoding vs eucjp
+- Hi?n tr?ng, c«Ñ file l?i, c«Ñ file kh«Ông, nh?ng khi view raw th«À l?i h?t.
+- V?i file l?i, khi edit tr«´n web, git b«¡o ©Âang encoding l«¢ UTF-16BE (whattt!)
+- ©¢«ª th? v«¢i tr«¥m t? h?p k«¿ t?, c«Ñ v? v?n ©Â? c«Ñ li«´n quan t?i k«ò t? + c«¡ch Git detect.
+
+
+- Git detect encoding:
+  -- L1: https://github.com/holman/ama/issues/820#issuecomment-304734345
+  -- L0: https://github.com/gitextensions/gitextensions/wiki/Git-Encoding
+  ====>> Kh«Ông ph?i file m«Ành encode g«À th«À Git l?y encode ©Â«Ñ, 'n«Ñ' t? ph«¤n bi?t (ntn th«À 'chua' bi?t).
+- Li«´n quan 2 file trong Neo, file kh«Ông l?i th«À th?y k«¿ t? c«Ñ v? ©Â?n gi?n h?n, kh«Ông r«Ø c«Ñ li«´n quan k«¿ t? jp 2-3 byte g«À kh«Ông.
+
+Lan man : Git c«Ñ file .gitattributes, m«¢ t«¿nh n«¥ng git thay ©Â?i theo th?i gian, v«¢ Neo c«ìng ©Â«ª h?n 10 tu?i. V?y n«´n, c«Ñ khi ©Â?i ©Â?u th«À n«Ñ ©Â«âng, sau ©Â«Ñ d?n d?n n«Ñ sai.
+©¢«ª th?:
+  -- Th«´m 1 file .gitattributes v«¢o root, khai b«¡o [*.ini	text working-tree-encoding=utf8], file .ini CªÑ l?i encode.
+  -- ©¢?i khai b«¡o sang [*.ini	text working-tree-encoding=eucjp], commit n«Ñ l«´n (kh«Ông bi?t c?n commit kh«Ông, make lazy n«´n kh«Ông th?) (update l«¢ kh«Ông c?n).
+  -- S?a nh? file .ini, commit l«´n, KHªÔNG l?i.
+
+C«¡ nh«¤n ng??i t«Àm hi?u n«¢y c«Ñ nghi ng? v? vi?c read-byte khi git ©Â?c file ©Â? x«¡c ©Â?nh encode, v«À l«âc th?, k«¿ t? n«¢y [ÂØ] m«¢ ©Âi 1 c?p th«À kh«Ông l?i, x«Ña b?t 1 k«¿ t? l?i l?i.
+
+Vi?c th«´m .gitattributes ? local ©Â? x? l«ò ntn c«Ñ v? ?n.
+
+Lan man 2
+    -- Khi b? l?i, n?u curl raw content th«À v?n tr? ©Â«âng text.
+    -- Khi b? l?i, n?u view raw content, xong d«ãng t«¿nh n«¥ng "Repair Text Encoding" c?a FireFox th«À l?i hi?n ©Â«âng.
+    -- H«ªy c?n th?n v?i view raw content, ©Âa ph?n tr? m«ª 304, nh? "Disable Cache" t?m th?i ©Â? ©Â? r?i.
